@@ -4,7 +4,7 @@ function calculate() {
     const consumoReal = parseFloat(document.getElementById('consumoReal').value);
     const desgasteMaquina = parseFloat(document.getElementById('desgasteMaquina').value);
     const precioRepuestos = parseFloat(document.getElementById('precioRepuestos').value);
-    const margenError = parseFloat(document.getElementById('margenError').value);
+    const margenError = ((parseFloat(document.getElementById('margenError').value))/100);
     const horasImpresion = parseFloat(document.getElementById('horasImpresion').value);
     const gramosFilamento = parseFloat(document.getElementById('gramosFilamento').value);
     const margenGanancia = ((parseFloat(document.getElementById('margenGanancia').value))/100);
