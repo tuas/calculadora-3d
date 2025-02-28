@@ -3,49 +3,37 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8; /* Fondo suave y relajante */
-    color: #2d3748; /* Color de texto principal */
+    background-color: #f0f4f8;
+    color: #2d3748;
     line-height: 1.6;
 }
 
-h1, h2 {
-    color: #2d3748; /* Color oscuro pero no negro */
-    margin-bottom: 20px;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 h1 {
     font-size: 2.5rem;
     text-align: center;
-    padding-top: 30px;
-    font-weight: 700;
-    letter-spacing: -0.05em;
+    color: #2d3748;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 1.8rem;
+    color: #4a5568;
     margin-top: 30px;
-    font-weight: 600;
-    color: #4a5568; /* Un gris más suave para los subtítulos */
     padding-bottom: 10px;
-    border-bottom: 2px solid #e2e8f0; /* Línea divisoria suave */
+    border-bottom: 2px solid #e2e8f0;
 }
 
-/* Contenedor principal */
-#calculator {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: #ffffff; /* Fondo blanco suave */
-    border-radius: 12px; /* Bordes más redondeados */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-}
-
-/* Etiquetas y campos de entrada */
 label {
     display: block;
     margin-top: 15px;
     font-weight: 500;
-    color: #4a5568; /* Color de texto suave */
+    color: #4a5568;
     font-size: 0.95rem;
 }
 
@@ -54,35 +42,34 @@ input[type="number"] {
     width: 100%;
     padding: 12px;
     margin-top: 8px;
-    border: 1px solid #e2e8f0; /* Borde suave */
-    border-radius: 8px; /* Bordes más redondeados */
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     font-size: 1rem;
-    color: #2d3748; /* Color de texto oscuro */
-    background-color: #f7fafc; /* Fondo de campo de entrada suave */
+    color: #2d3748;
+    background-color: #f7fafc;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-    border-color: #4299e1; /* Azul suave al enfocar */
+    border-color: #4299e1;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2); /* Sombra al enfocar */
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
 
 input[readonly] {
-    background-color: #edf2f7; /* Fondo más claro para campos de solo lectura */
+    background-color: #edf2f7;
     cursor: not-allowed;
 }
 
-/* Botones */
 button {
     display: inline-block;
     padding: 12px 24px;
     margin-top: 20px;
-    background-color: #4299e1; /* Azul suave */
+    background-color: #4299e1;
     color: white;
     border: none;
-    border-radius: 8px; /* Bordes más redondeados */
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -90,18 +77,16 @@ button {
 }
 
 button:hover {
-    background-color: #3182ce; /* Azul más oscuro al hacer hover */
-    transform: translateY(-2px); /* Efecto de elevación */
+    background-color: #3182ce;
+    transform: translateY(-2px);
 }
 
 button:active {
-    transform: translateY(0); /* Restablecer al hacer clic */
+    transform: translateY(0);
 }
 
-/* Listado de archivos */
 #fileList {
-    max-width: 800px;
-    margin: 20px auto;
+    list-style-type: none;
     padding: 0;
 }
 
@@ -110,7 +95,7 @@ button:active {
     margin: 10px 0;
     padding: 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
@@ -119,31 +104,30 @@ button:active {
 }
 
 .file-item:hover {
-    transform: translateY(-3px); /* Efecto de elevación */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .file-item:active {
-    transform: translateY(0); /* Restablecer al hacer clic */
+    transform: translateY(0);
 }
 
 .file-item span {
     font-weight: 500;
-    color: #4a5568; /* Color de texto suave */
+    color: #4a5568;
 }
 
 .file-item button {
-    background-color: #e53e3e; /* Rojo suave para botones de acción */
+    background-color: #e53e3e;
     padding: 8px 16px;
     font-size: 0.9rem;
     margin: 0;
 }
 
 .file-item button:hover {
-    background-color: #c53030; /* Rojo más oscuro al hacer hover */
+    background-color: #c53030;
 }
 
-/* Mensajes de alerta */
 .alert {
     padding: 12px;
     margin-top: 20px;
@@ -153,16 +137,15 @@ button:active {
 }
 
 .alert-success {
-    background-color: #48bb78; /* Verde suave */
+    background-color: #48bb78;
     color: white;
 }
 
 .alert-error {
-    background-color: #e53e3e; /* Rojo suave */
+    background-color: #e53e3e;
     color: white;
 }
 
-/* Estilos responsivos */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -172,8 +155,8 @@ button:active {
         font-size: 1.5rem;
     }
 
-    #calculator {
-        padding: 20px;
+    .container {
+        padding: 15px;
     }
 
     button {
