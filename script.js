@@ -16,12 +16,13 @@ function calculate() {
     const costo = precioMaterial + precioLuz + desgasteMaquinaResult + margenErrorResult;
     const totalCobrar = costo * margenGanancia;
 
-    document.getElementById('precioMaterial').value = precioMaterial.toFixed(2);
-    document.getElementById('precioLuz').value = precioLuz.toFixed(2);
-    document.getElementById('desgasteMaquinaResult').value = desgasteMaquinaResult.toFixed(2);
-    document.getElementById('margenErrorResult').value = margenErrorResult.toFixed(2);
-    document.getElementById('costo').value = costo.toFixed(2);
-    document.getElementById('totalCobrar').value = totalCobrar.toFixed(2);
+    // Redondear los valores a enteros
+    document.getElementById('precioMaterial').value = Math.round(precioMaterial);
+    document.getElementById('precioLuz').value = Math.round(precioLuz);
+    document.getElementById('desgasteMaquinaResult').value = Math.round(desgasteMaquinaResult);
+    document.getElementById('margenErrorResult').value = Math.round(margenErrorResult);
+    document.getElementById('costo').value = Math.round(costo);
+    document.getElementById('totalCobrar').value = Math.round(totalCobrar);
 }
 
 function saveFile() {
