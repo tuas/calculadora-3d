@@ -1,89 +1,101 @@
 /* Estilos generales */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #f0f4f8; /* Fondo suave y relajante */
+    color: #2d3748; /* Color de texto principal */
     line-height: 1.6;
 }
 
 h1, h2 {
-    color: #2c3e50;
+    color: #2d3748; /* Color oscuro pero no negro */
     margin-bottom: 20px;
 }
 
 h1 {
     font-size: 2.5rem;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 30px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
 }
 
 h2 {
     font-size: 1.8rem;
     margin-top: 30px;
-    border-bottom: 2px solid #3498db;
+    font-weight: 600;
+    color: #4a5568; /* Un gris más suave para los subtítulos */
     padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0; /* Línea divisoria suave */
 }
 
 /* Contenedor principal */
 #calculator {
     max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: #ffffff; /* Fondo blanco suave */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
 }
 
 /* Etiquetas y campos de entrada */
 label {
     display: block;
     margin-top: 15px;
-    font-weight: 600;
-    color: #34495e;
+    font-weight: 500;
+    color: #4a5568; /* Color de texto suave */
+    font-size: 0.95rem;
 }
 
 input[type="text"],
 input[type="number"] {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #bdc3c7;
-    border-radius: 5px;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #e2e8f0; /* Borde suave */
+    border-radius: 8px; /* Bordes más redondeados */
     font-size: 1rem;
-    color: #333;
-    background-color: #ecf0f1;
-    transition: border-color 0.3s ease;
+    color: #2d3748; /* Color de texto oscuro */
+    background-color: #f7fafc; /* Fondo de campo de entrada suave */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus {
-    border-color: #3498db;
+    border-color: #4299e1; /* Azul suave al enfocar */
     outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2); /* Sombra al enfocar */
 }
 
 input[readonly] {
-    background-color: #dfe6e9;
+    background-color: #edf2f7; /* Fondo más claro para campos de solo lectura */
     cursor: not-allowed;
 }
 
 /* Botones */
 button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin-top: 20px;
-    background-color: #3498db;
+    background-color: #4299e1; /* Azul suave */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Bordes más redondeados */
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #3182ce; /* Azul más oscuro al hacer hover */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+button:active {
+    transform: translateY(0); /* Restablecer al hacer clic */
 }
 
 /* Listado de archivos */
@@ -96,39 +108,57 @@ button:hover {
 .file-item {
     background-color: #ffffff;
     margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .file-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al hacer hover */
 }
 
 .file-item:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(0); /* Restablecer al hacer clic */
+}
+
+.file-item span {
+    font-weight: 500;
+    color: #4a5568; /* Color de texto suave */
+}
+
+.file-item button {
+    background-color: #e53e3e; /* Rojo suave para botones de acción */
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.file-item button:hover {
+    background-color: #c53030; /* Rojo más oscuro al hacer hover */
 }
 
 /* Mensajes de alerta */
 .alert {
-    padding: 10px;
+    padding: 12px;
     margin-top: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .alert-success {
-    background-color: #2ecc71;
+    background-color: #48bb78; /* Verde suave */
     color: white;
 }
 
 .alert-error {
-    background-color: #e74c3c;
+    background-color: #e53e3e; /* Rojo suave */
     color: white;
 }
 
@@ -143,7 +173,7 @@ button:hover {
     }
 
     #calculator {
-        padding: 15px;
+        padding: 20px;
     }
 
     button {
