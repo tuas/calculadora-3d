@@ -5,68 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora 3D</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Calculadora 3D</h1>
-    <div id="calculator">
-        <label for="fileName">Nombre del Archivo:</label>
-        <input type="text" id="fileName" placeholder="Nombre del archivo">
-        <button onclick="saveFile()">Guardar Archivo</button>
-        <button onclick="loadFile()">Cargar Archivo</button>
+    <div class="container">
+        <h1>Calculadora 3D</h1>
+        <div id="calculator">
+            <label for="fileName">Nombre del Archivo:</label>
+            <input type="text" id="fileName" placeholder="Nombre del archivo">
+            <button onclick="saveFile()">Guardar Archivo</button>
+            <button onclick="loadFile()">Cargar Archivo</button>
 
-        <h2>Gastos Fijos</h2>
-        <label for="precioKG">Precio KG:</label>
-        <input type="number" id="precioKG" value="15000">
-        
-        <label for="precioKwh">Precio Kwh:</label>
-        <input type="number" id="precioKwh" value="52.02">
-        
-        <label for="consumoReal">Consumo real por hora (W):</label>
-        <input type="number" id="consumoReal" value="150">
-        
-        <label for="desgasteMaquina">Desgaste de la Maquina en horas:</label>
-        <input type="number" id="desgasteMaquina" value="4320">
-        
-        <label for="precioRepuestos">Precio Repuestos:</label>
-        <input type="number" id="precioRepuestos" value="5000">
-        
-        <label for="margenError">% de Margen de error:</label>
-        <input type="number" id="margenError" value="50">
+            <h2>Gastos Fijos</h2>
+            <label for="precioKG">Precio KG:</label>
+            <input type="number" id="precioKG" value="15000">
+            
+            <label for="precioKwh">Precio Kwh:</label>
+            <input type="number" id="precioKwh" value="52.02">
+            
+            <label for="consumoReal">Consumo real por hora (W):</label>
+            <input type="number" id="consumoReal" value="150">
+            
+            <label for="desgasteMaquina">Desgaste de la Maquina en horas:</label>
+            <input type="number" id="desgasteMaquina" value="4320">
+            
+            <label for="precioRepuestos">Precio Repuestos:</label>
+            <input type="number" id="precioRepuestos" value="5000">
+            
+            <label for="margenError">% de Margen de error:</label>
+            <input type="number" id="margenError" value="50">
 
-        <h2>Pieza</h2>
-        <label for="horasImpresion">Horas de impresion:</label>
-        <input type="number" id="horasImpresion" value="2">
-        
-        <label for="gramosFilamento">Gramos de Filamento:</label>
-        <input type="number" id="gramosFilamento" value="17">
-        
-        <label for="margenGanancia">Margen de Ganancia x:</label>
-        <input type="number" id="margenGanancia" value="2">
+            <h2>Pieza</h2>
+            <label for="horasImpresion">Horas de impresión:</label>
+            <input type="number" id="horasImpresion" value="2">
+            
+            <label for="gramosFilamento">Gramos de Filamento:</label>
+            <input type="number" id="gramosFilamento" value="17">
+            
+            <label for="margenGanancia">Margen de Ganancia x:</label>
+            <input type="number" id="margenGanancia" value="2">
 
-        <h2>Resultados</h2>
-        <label for="precioMaterial">Precio Material:</label>
-        <input type="number" id="precioMaterial" readonly>
-        
-        <label for="precioLuz">Precio Luz:</label>
-        <input type="number" id="precioLuz" readonly>
-        
-        <label for="desgasteMaquinaResult">Desgaste de la maquina:</label>
-        <input type="number" id="desgasteMaquinaResult" readonly>
-        
-        <label for="margenErrorResult">Margen de Error:</label>
-        <input type="number" id="margenErrorResult" readonly>
-        
-        <label for="costo">COSTO:</label>
-        <input type="number" id="costo" readonly>
-        
-        <label for="totalCobrar">TOTAL A COBRAR:</label>
-        <input type="number" id="totalCobrar" readonly>
+            <h2>Resultados</h2>
+            <label for="precioMaterial">Precio Material:</label>
+            <input type="number" id="precioMaterial" readonly>
+            
+            <label for="precioLuz">Precio Luz:</label>
+            <input type="number" id="precioLuz" readonly>
+            
+            <label for="desgasteMaquinaResult">Desgaste de la maquina:</label>
+            <input type="number" id="desgasteMaquinaResult" readonly>
+            
+            <label for="margenErrorResult">Margen de Error:</label>
+            <input type="number" id="margenErrorResult" readonly>
+            
+            <label for="costo">COSTO:</label>
+            <input type="number" id="costo" readonly>
+            
+            <label for="totalCobrar">TOTAL A COBRAR:</label>
+            <input type="number" id="totalCobrar" readonly>
 
-        <button onclick="calculate()">Calcular</button>
+            <button onclick="calculate()">Calcular</button>
+        </div>
+
+        <h2>Listado de Archivos</h2>
+        <ul id="fileList"></ul>
     </div>
-
-    <h2>Listado de Archivos</h2>
-    <ul id="fileList"></ul>
 
     <script src="script.js"></script>
 </body>
