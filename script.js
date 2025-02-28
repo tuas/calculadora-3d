@@ -92,13 +92,23 @@ function updateFileList() {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const li = document.createElement('li');
-        li.textContent = key;
+        li.className = 'file-item';
+        li.innerHTML = `
+            <span>${key}</span>
+            <button onclick="deleteFile('${key}')">Eliminar</button>
+        `;
         li.onclick = () => {
             document.getElementById('fileName').value = key;
             loadFile();
         };
         fileList.appendChild(li);
     }
+}
+
+function deleteFile(key) {
+    localStorage.removeItem(key);
+    updateFileList();
+    alert("Archivo eliminado correctamente.");
 }
 
 // Inicializar la lista de archivos al cargar la página
