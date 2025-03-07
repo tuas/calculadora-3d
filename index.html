@@ -3,72 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora V2</title>
+    <title>Calculadora de Costos de Impresión</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Calculadora V2</h1>
-        <div id="calculator">
-            <label for="fileName">Nombre del Archivo:</label>
-            <input type="text" id="fileName" placeholder="Nombre del archivo">
-            <button onclick="saveFile()">Guardar Archivo</button>
-            <button onclick="loadFile()">Cargar Archivo</button>
+        <h1>Calculadora de Costos de Impresión</h1>
+        <form id="calculadoraForm">
+            <!-- Campos de entrada -->
+            <label for="precioKG">Precio por KG (€):</label>
+            <input type="number" id="precioKG" name="precioKG" required>
 
-            <h2>Gastos Fijos</h2>
-            <label for="precioKG">Precio KG:</label>
-            <input type="number" id="precioKG" value="15000">
-            
-            <label for="precioKwh">Precio Kwh:</label>
-            <input type="number" id="precioKwh" value="95">
-            
-            <label for="consumoReal">Consumo real por hora (W):</label>
-            <input type="number" id="consumoReal" value="270">
-            
-            <label for="desgasteMaquina">Desgaste de la Maquina en horas:</label>
-            <input type="number" id="desgasteMaquina" value="4320">
-            
-            <label for="precioRepuestos">Precio Repuestos:</label>
-            <input type="number" id="precioRepuestos" value="10000">
-            
-            <label for="margenError">% de Margen de error:</label>
-            <input type="number" id="margenError" pattern="[0-100]">
+            <label for="precioKwh">Precio por KWh (€):</label>
+            <input type="number" id="precioKwh" name="precioKwh" required>
 
-            <h2>Pieza</h2>
-            <label for="horasImpresion">Horas de impresión:</label>
-            <input type="number" id="horasImpresion" value="4">
-            
+            <label for="consumoReal">Consumo Real (W):</label>
+            <input type="number" id="consumoReal" name="consumoReal" required>
+
+            <label for="desgasteMaquina">Desgaste Máquina (horas):</label>
+            <input type="number" id="desgasteMaquina" name="desgasteMaquina" required>
+
+            <label for="precioRepuestos">Precio Repuestos (€):</label>
+            <input type="number" id="precioRepuestos" name="precioRepuestos" required>
+
+            <label for="margenError">Margen de Error (%):</label>
+            <input type="number" id="margenError" name="margenError" required>
+
+            <label for="horasImpresion">Horas de Impresión:</label>
+            <input type="number" id="horasImpresion" name="horasImpresion" required>
+
             <label for="gramosFilamento">Gramos de Filamento:</label>
-            <input type="number" id="gramosFilamento" value="27">
-            
-            <label for="margenGanancia">Margen de Ganancia x:</label>
-            <input type="number" id="margenGanancia" value="2.5">
+            <input type="number" id="gramosFilamento" name="gramosFilamento" required>
 
+            <label for="margenGanancia">Margen de Ganancia (%):</label>
+            <input type="number" id="margenGanancia" name="margenGanancia" required>
+
+            <!-- Botón de cálculo -->
+            <button type="button" onclick="calculate()">Calcular</button>
+        </form>
+
+        <!-- Resultados -->
+        <div id="resultados">
             <h2>Resultados</h2>
-            <label for="precioMaterial">Precio Material:</label>
-            <input type="number" id="precioMaterial" readonly>
-            
-            <label for="precioLuz">Precio Luz:</label>
-            <input type="number" id="precioLuz" readonly>
-            
-            <label for="desgasteMaquinaResult">Desgaste de la maquina:</label>
-            <input type="number" id="desgasteMaquinaResult" readonly>
-            
-            <label for="margenErrorResult">Margen de Error:</label>
-            <input type="number" id="margenErrorResult" readonly>
-            
-            <label for="costo">COSTO:</label>
-            <input type="number" id="costo" readonly>
-            
-            <label for="totalCobrar">TOTAL A COBRAR:</label>
-            <input type="number" id="totalCobrar" readonly>
+            <label for="precioMaterial">Precio Material (€):</label>
+            <input type="text" id="precioMaterial" readonly>
 
-            <button onclick="calculate()">Calcular</button>
+            <label for="precioLuz">Precio Luz (€):</label>
+            <input type="text" id="precioLuz" readonly>
+
+            <label for="desgasteMaquinaResult">Desgaste Máquina (€):</label>
+            <input type="text" id="desgasteMaquinaResult" readonly>
+
+            <label for="margenErrorResult">Margen de Error (€):</label>
+            <input type="text" id="margenErrorResult" readonly>
+
+            <label for="costo">Costo Total (€):</label>
+            <input type="text" id="costo" readonly>
+
+            <label for="totalCobrar">Total a Cobrar (€):</label>
+            <input type="text" id="totalCobrar" readonly>
         </div>
 
-        <h2>Listado de Archivos</h2>
-        <ul id="fileList"></ul>
+        <!-- Guardar y cargar datos -->
+        <div class="guardar-cargar">
+            <label for="fileName">Nombre del archivo:</label>
+            <input type="text" id="fileName" placeholder="Nombre del archivo">
+            <button onclick="saveFile()">Guardar Datos</button>
+            <button onclick="loadFile()">Cargar Datos</button>
+        </div>
+
+        <!-- Lista de archivos guardados -->
+        <div id="fileListContainer">
+            <h2>Archivos Guardados</h2>
+            <ul id="fileList"></ul>
+        </div>
     </div>
 
     <script src="script.js"></script>
