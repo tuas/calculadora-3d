@@ -1,29 +1,30 @@
 function calculate() {
-    const precioKG = parseFloat(document.getElementById('precioKG').value);
-    const precioKwh = parseFloat(document.getElementById('precioKwh').value);
-    const consumoReal = parseFloat(document.getElementById('consumoReal').value);
-    const desgasteMaquina = parseFloat(document.getElementById('desgasteMaquina').value);
-    const precioRepuestos = parseFloat(document.getElementById('precioRepuestos').value);
-    const margenError = ((parseFloat(document.getElementById('margenError').value))/100);
-    const horasImpresion = parseFloat(document.getElementById('horasImpresion').value);
-    const gramosFilamento = parseFloat(document.getElementById('gramosFilamento').value);
-    const margenGanancia = ((parseFloat(document.getElementById('margenGanancia').value))/100);
-         
+    // Obtener valores y convertirlos a enteros
+    const precioKG = parseInt(document.getElementById('precioKG').value);
+    const precioKwh = parseInt(document.getElementById('precioKwh').value);
+    const consumoReal = parseInt(document.getElementById('consumoReal').value);
+    const desgasteMaquina = parseInt(document.getElementById('desgasteMaquina').value);
+    const precioRepuestos = parseInt(document.getElementById('precioRepuestos').value);
+    const margenError = parseInt(document.getElementById('margenError').value) / 100;
+    const horasImpresion = parseInt(document.getElementById('horasImpresion').value);
+    const gramosFilamento = parseInt(document.getElementById('gramosFilamento').value);
+    const margenGanancia = parseInt(document.getElementById('margenGanancia').value) / 100;
+
+    // Cálculos
     const precioMaterial = (gramosFilamento * precioKG) / 1000;
     const precioLuz = ((consumoReal * precioKwh) / 1000) * horasImpresion;
     const desgasteMaquinaResult = (precioRepuestos / desgasteMaquina) * horasImpresion;
-    const margenErrorResult = (precioMaterial + precioLuz + desgasteMaquinaResult) * (margenError / 100);
-    const costo = precioMaterial:margenErrorResult;
-    const totalCobrar = costo * margenGanancia;
+    const margenErrorResult = (precioMaterial + precioLuz + desgasteMaquinaResult) * margenError;
+    const costo = precioMaterial + precioLuz + desgasteMaquinaResult + margenErrorResult;
+    const totalCobrar = costo * (1 + margenGanancia);
 
-    // Redondear los valores a enteros
+    // Mostrar resultados redondeados
     document.getElementById('precioMaterial').value = Math.round(precioMaterial);
     document.getElementById('precioLuz').value = Math.round(precioLuz);
     document.getElementById('desgasteMaquinaResult').value = Math.round(desgasteMaquinaResult);
     document.getElementById('margenErrorResult').value = Math.round(margenErrorResult);
     document.getElementById('costo').value = Math.round(costo);
     document.getElementById('totalCobrar').value = Math.round(totalCobrar);
-    document.getElementById('margenGanancia').value = Math.round(margenGanancia);
 }
 
 function saveFile() {
@@ -69,6 +70,7 @@ function loadFile() {
         return;
     }
 
+    // Cargar datos en los campos
     document.getElementById('precioKG').value = data.precioKG;
     document.getElementById('precioKwh').value = data.precioKwh;
     document.getElementById('consumoReal').value = data.consumoReal;
