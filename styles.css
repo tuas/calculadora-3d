@@ -1,82 +1,88 @@
 /* Estilos generales */
 body {
-    font-family: 'Courier New', monospace;
-    background-color: #121212; /* Fondo oscuro */
-    color: #E0E0E0; /* Texto claro */
+    font-family: 'Inter', sans-serif; /* Fuente moderna */
+    background-color: #F5F5F5; /* Fondo claro */
+    color: #333333; /* Texto oscuro */
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
-    background-color: #1E1E1E; /* Contenedor oscuro */
+    background-color: #FFFFFF; /* Fondo blanco */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
     width: 100%;
-    max-width: 600px;
-    border: 1px solid #333333; /* Borde sutil */
+    max-width: 800px; /* Ancho máximo */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 20px; /* Espacio entre elementos */
 }
 
 h1 {
+    grid-column: span 2; /* Ocupa dos columnas */
     text-align: center;
-    color: #00FF00; /* Verde neón */
-    font-size: 24px;
+    color: #2C3E50; /* Azul oscuro */
+    font-size: 28px;
     margin-bottom: 20px;
-    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Efecto neón */
 }
 
 /* Formulario */
 form {
-    display: grid;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    font-weight: bold;
-    color: #E0E0E0; /* Texto claro */
+    font-weight: 600; /* Negrita */
+    color: #2C3E50; /* Azul oscuro */
+    font-size: 14px;
 }
 
 input[type="number"], input[type="text"] {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #333333; /* Borde oscuro */
-    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #CCCCCC; /* Borde gris */
+    border-radius: 6px; /* Bordes redondeados */
     box-sizing: border-box;
     font-size: 14px;
-    background-color: #2C2C2C; /* Fondo oscuro */
-    color: #E0E0E0; /* Texto claro */
+    background-color: #F9F9F9; /* Fondo claro */
+    color: #333333; /* Texto oscuro */
 }
 
 input[type="number"]:focus, input[type="text"]:focus {
     outline: none;
-    border-color: #00FF00; /* Borde verde neón al enfocar */
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Sombra neón */
+    border-color: #3498DB; /* Borde azul al enfocar */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /* Sombra suave */
 }
 
 /* Botones */
 button {
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px; /* Bordes redondeados */
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button.calcular {
-    background-color: #00FF00; /* Verde neón */
-    color: #121212; /* Texto oscuro */
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Sombra neón */
+    background-color: #3498DB; /* Azul vibrante */
+    color: #FFFFFF; /* Texto blanco */
+    font-weight: 600;
 }
 
 button.guardar, button.cargar {
-    background-color: #333333; /* Fondo oscuro */
-    color: #00FF00; /* Texto verde neón */
-    border: 1px solid #00FF00; /* Borde verde neón */
+    background-color: #ECF0F1; /* Gris claro */
+    color: #2C3E50; /* Azul oscuro */
+    border: 1px solid #CCCCCC; /* Borde gris */
 }
 
 button:hover {
@@ -85,47 +91,50 @@ button:hover {
 
 /* Resultados */
 #resultados {
-    background-color: #2C2C2C; /* Fondo oscuro */
+    background-color: #F9F9F9; /* Fondo claro */
     padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    border: 1px solid #00FF00; /* Borde verde neón */
+    border-radius: 6px; /* Bordes redondeados */
+    border: 1px solid #CCCCCC; /* Borde gris */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #resultados input {
-    background-color: #1E1E1E; /* Fondo oscuro */
-    color: #00FF00; /* Texto verde neón */
-    border: 1px solid #333333; /* Borde oscuro */
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #333333; /* Texto oscuro */
+    border: 1px solid #CCCCCC; /* Borde gris */
 }
 
 /* Lista de archivos */
 #fileListContainer {
+    grid-column: span 2; /* Ocupa dos columnas */
     margin-top: 20px;
 }
 
 .file-item {
-    background-color: #2C2C2C; /* Fondo oscuro */
+    background-color: #FFFFFF; /* Fondo blanco */
     padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 5px;
+    border-radius: 6px; /* Bordes redondeados */
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #333333; /* Borde oscuro */
+    border: 1px solid #CCCCCC; /* Borde gris */
 }
 
 .file-item span {
-    color: #E0E0E0; /* Texto claro */
+    color: #333333; /* Texto oscuro */
 }
 
 .file-item button {
-    background-color: #FF0000; /* Rojo neón */
-    color: #121212; /* Texto oscuro */
+    background-color: #E74C3C; /* Rojo vibrante */
+    color: #FFFFFF; /* Texto blanco */
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 4px; /* Bordes redondeados */
     border: none;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Sombra neón */
+    font-size: 12px;
 }
 
 .file-item button:hover {
