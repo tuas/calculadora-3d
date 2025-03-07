@@ -1,7 +1,8 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+    color: #333333;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +12,7 @@ body {
 }
 
 .container {
-    background: #fff;
+    background-color: #F9F9F9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -19,87 +20,96 @@ body {
     max-width: 600px;
 }
 
-h1, h2 {
+h1 {
     text-align: center;
-    color: #444;
-}
-
-form, #resultados, .guardar-cargar, #fileListContainer {
+    color: #2C3E50;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
+/* Formulario */
+form {
+    display: grid;
+    gap: 10px;
+}
+
 label {
-    display: block;
-    margin: 10px 0 5px;
     font-weight: bold;
+    color: #333333;
 }
 
 input[type="number"], input[type="text"] {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #CCCCCC;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
-input[readonly] {
-    background-color: #f9f9f9;
+input[type="number"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #3498DB;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
 }
 
+/* Botones */
 button {
-    background-color: #28a745;
-    color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button.calcular {
+    background: linear-gradient(135deg, #3498DB, #2980B9);
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button.guardar, button.cargar {
+    background-color: #ECF0F1;
+    color: #2C3E50;
 }
 
 button:hover {
-    background-color: #218838;
+    opacity: 0.9;
 }
 
-.guardar-cargar {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* Resultados */
+#resultados {
+    background-color: #2C3E50;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #FFFFFF;
 }
 
+#resultados input {
+    background-color: #ECF0F1;
+    color: #333333;
+}
+
+/* Lista de archivos */
 #fileListContainer {
     margin-top: 20px;
 }
 
-#fileList {
-    list-style: none;
-    padding: 0;
-}
-
 .file-item {
+    background-color: #ECF0F1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 5px;
-    cursor: pointer;
-}
-
-.file-item:hover {
-    background-color: #f1f1f1;
 }
 
 .file-item button {
-    background-color: #dc3545;
+    background-color: #E74C3C;
+    color: #FFFFFF;
     padding: 5px 10px;
-    border: none;
     border-radius: 4px;
-    color: white;
-    cursor: pointer;
-}
-
-.file-item button:hover {
-    background-color: #c82333;
 }
