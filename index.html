@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
         <!-- Formulario -->
         <form id="calculadoraForm">
             <label for="precioKG">Precio por KG (€):</label>
@@ -39,13 +38,7 @@
 
             <button type="button" class="calcular" onclick="calculate()">Calcular</button>
         </form>
-
-        <!-- Sección de Cargar/Descargar -->
-        <div id="cargar-descargar">
-            <button class="guardar" onclick="saveFile()">Guardar</button>
-            <button class="cargar" onclick="loadFile()">Cargar</button>
-        </div>
-
+    
         <!-- Resultados -->
         <div id="resultados">
             <h2>Resultados</h2>
@@ -67,7 +60,12 @@
             <label for="totalCobrar">Total a Cobrar (€):</label>
             <input type="text" id="totalCobrar" readonly>
         </div>
-    </div>
+       
+        <!-- Sección de Cargar/Descargar -->
+        <div id="cargar-descargar">
+            <button class="guardar" onclick="saveFile()">Guardar</button>
+            <button class="cargar" onclick="loadFile()">Cargar</button>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
