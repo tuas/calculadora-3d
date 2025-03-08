@@ -1,79 +1,152 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Costos de Impresión</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Formulario -->
-        <form id="calculadoraForm">
-            <label for="precioKG">Precio por KG (€):</label>
-            <input type="number" id="precioKG" name="precioKG" required>
+/* Estilos generales */
+body {
+    font-family: 'Inter', sans-serif; /* Fuente moderna */
+    background-color: #1E1E1E; /* Fondo oscuro */
+    color: #E0E0E0; /* Texto claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alineación arriba para evitar centrado vertical */
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-            <label for="precioKwh">Precio por KWh (€):</label>
-            <input type="number" id="precioKwh" name="precioKwh" required>
+.container {
+    background-color: #2C2C2C; /* Fondo gris oscuro */
+    padding: 20px;
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    width: 95%; /* Ocupa casi todo el ancho de la pantalla */
+    max-width: 1200px; /* Ancho máximo */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 15px; /* Espacio entre elementos */
+    max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+}
 
-            <label for="consumoReal">Consumo Real (W):</label>
-            <input type="number" id="consumoReal" name="consumoReal" required>
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio reducido entre elementos */
+}
 
-            <label for="desgasteMaquina">Desgaste Máquina (horas):</label>
-            <input type="number" id="desgasteMaquina" name="desgasteMaquina" required>
+label {
+    font-weight: 500; /* Semi-negrita */
+    color: #00FF00; /* Verde neón */
+    font-size: 14px;
+}
 
-            <label for="precioRepuestos">Precio Repuestos (€):</label>
-            <input type="number" id="precioRepuestos" name="precioRepuestos" required>
+input[type="number"], input[type="text"] {
+    width: 100%;
+    padding: 8px; /* Padding reducido */
+    border: 1px solid #555555; /* Borde gris */
+    border-radius: 6px; /* Bordes redondeados */
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #4A4A4A; /* Fondo gris oscuro */
+    color: #E0E0E0; /* Texto claro */
+}
 
-            <label for="margenError">Margen de Error (%):</label>
-            <input type="number" id="margenError" name="margenError" required>
+input[type="number"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #00FF00; /* Borde verde neón al enfocar */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Sombra suave */
+}
 
-            <label for="horasImpresion">Horas de Impresión:</label>
-            <input type="number" id="horasImpresion" name="horasImpresion" required>
+/* Botones */
+button {
+    padding: 10px 15px; /* Botones más compactos */
+    border: none;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500; /* Semi-negrita */
+}
 
-            <label for="gramosFilamento">Gramos de Filamento:</label>
-            <input type="number" id="gramosFilamento" name="gramosFilamento" required>
+button.calcular {
+    background-color: #00FF00; /* Verde neón */
+    color: #1E1E1E; /* Texto oscuro */
+}
 
-            <label for="margenGanancia">Margen de Ganancia (%):</label>
-            <input type="number" id="margenGanancia" name="margenGanancia" required>
+button.guardar, button.cargar {
+    background-color: #3A3A3A; /* Fondo gris medio */
+    color: #00FF00; /* Texto verde neón */
+    border: 1px solid #00FF00; /* Borde verde neón */
+}
 
-            <button type="button" class="calcular" onclick="calculate()">Calcular</button>
-        </form>
+button:hover {
+    opacity: 0.9;
+}
 
-        <!-- Resultados -->
-        <div id="resultados">
-            <h2>Resultados</h2>
-            <label for="precioMaterial">Precio Material (€):</label>
-            <input type="text" id="precioMaterial" readonly>
+/* Resultados */
+#resultados {
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #555555; /* Borde gris */
+    color: #E0E0E0; /* Texto claro */
+    font-size: 14px;
+    min-height: 150px; /* Altura mínima para resultados */
+    max-height: 150px; /* Altura máxima para resultados */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+}
 
-            <label for="precioLuz">Precio Luz (€):</label>
-            <input type="text" id="precioLuz" readonly>
+#resultados h2 {
+    color: #00FF00; /* Verde neón */
+    font-size: 18px; /* Tamaño de fuente reducido */
+    margin-bottom: 10px; /* Espacio reducido debajo del título */
+    text-align: center;
+}
 
-            <label for="desgasteMaquinaResult">Desgaste Máquina (€):</label>
-            <input type="text" id="desgasteMaquinaResult" readonly>
+/* Tabla */
+#tabla {
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #555555; /* Borde gris */
+    color: #E0E0E0; /* Texto claro */
+    font-size: 14px;
+    min-height: 200px; /* Altura mínima para la tabla */
+    max-height: 200px; /* Altura máxima para la tabla */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+}
 
-            <label for="margenErrorResult">Margen de Error (€):</label>
-            <input type="text" id="margenErrorResult" readonly>
+#tabla h2 {
+    color: #00FF00; /* Verde neón */
+    font-size: 18px; /* Tamaño de fuente reducido */
+    margin-bottom: 10px; /* Espacio reducido debajo del título */
+    text-align: center;
+}
 
-            <label for="costo">Costo Total (€):</label>
-            <input type="text" id="costo" readonly>
+/* Sección de Cargar/Descargar */
+#cargar-descargar {
+    grid-column: span 2; /* Ocupa dos columnas */
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espacio reducido entre botones */
+    margin-top: 15px; /* Espacio arriba de los botones */
+}
 
-            <label for="totalCobrar">Total a Cobrar (€):</label>
-            <input type="text" id="totalCobrar" readonly>
-        </div>
+#cargar-descargar button {
+    background-color: #00FF00; /* Verde neón */
+    color: #1E1E1E; /* Texto oscuro */
+    padding: 10px 15px; /* Botones más compactos */
+    border: none;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Ocupa el espacio disponible */
+}
 
-        <!-- Tabla -->
-        <div id="tabla">
-            <h2>Tabla</h2>
-            <!-- Contenido de la tabla -->
-        </div>
-
-        <!-- Sección de Cargar/Descargar -->
-        <div id="cargar-descargar">
-            <button class="guardar" onclick="saveFile()">Guardar</button>
-            <button class="cargar" onclick="loadFile()">Cargar</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+#cargar-descargar button:hover {
+    background-color: #00CC00; /* Verde más oscuro al pasar el mouse */
+}
