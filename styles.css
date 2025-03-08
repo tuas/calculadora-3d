@@ -1,8 +1,8 @@
 /* Estilos generales */
 body {
     font-family: 'Inter', sans-serif; /* Fuente moderna */
-    background-color: #FAF8F5; /* Fondo pastel claro */
-    color: #4A4A4A; /* Texto gris oscuro */
+    background-color: #1E1E1E; /* Fondo oscuro */
+    color: #E0E0E0; /* Texto claro */
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,25 +14,87 @@ body {
 }
 
 .container {
-    background-color: #FFFFFF; /* Fondo blanco */
+    background-color: #2C2C2C; /* Fondo gris oscuro */
     padding: 25px;
     border-radius: 12px; /* Bordes redondeados */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
     width: 100%;
-    max-width: 800px; /* Ancho máximo */
+    max-width: 1000px; /* Ancho máximo */
     display: grid;
     grid-template-columns: 1fr 1fr; /* Dos columnas */
     gap: 20px; /* Espacio entre elementos */
-    border: 1px solid #E0E0E0; /* Borde sutil */
 }
 
-h1 {
+/* Sección de Datos */
+#datos {
     grid-column: span 2; /* Ocupa dos columnas */
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas internas */
+    gap: 15px; /* Espacio entre elementos */
+}
+
+#datos h2 {
+    grid-column: span 2; /* Ocupa dos columnas */
+    color: #00FF00; /* Verde neón */
+    font-size: 24px;
+    margin-bottom: 15px;
     text-align: center;
-    color: #6C5B7B; /* Morado pastel */
-    font-size: 28px;
-    margin-bottom: 20px;
-    font-weight: 600;
+}
+
+#datos .slot {
+    background-color: #4A4A4A; /* Fondo gris oscuro */
+    padding: 15px;
+    border-radius: 6px; /* Bordes redondeados */
+    border: 1px solid #555555; /* Borde gris */
+    color: #E0E0E0; /* Texto claro */
+    font-size: 14px;
+}
+
+/* Sección de Cargar/Descargar */
+#cargar-descargar {
+    grid-column: span 2; /* Ocupa dos columnas */
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Espacio entre elementos */
+}
+
+#cargar-descargar button {
+    background-color: #00FF00; /* Verde neón */
+    color: #1E1E1E; /* Texto oscuro */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Ocupa el espacio disponible */
+}
+
+#cargar-descargar button:hover {
+    background-color: #00CC00; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Resultados y Tabla */
+#resultados, #tabla {
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #555555; /* Borde gris */
+    color: #E0E0E0; /* Texto claro */
+    font-size: 14px;
+}
+
+#resultados h2, #tabla h2 {
+    color: #00FF00; /* Verde neón */
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 /* Formulario */
@@ -44,25 +106,25 @@ form {
 
 label {
     font-weight: 500; /* Semi-negrita */
-    color: #6C5B7B; /* Morado pastel */
+    color: #00FF00; /* Verde neón */
     font-size: 14px;
 }
 
 input[type="number"], input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #E0E0E0; /* Borde gris claro */
+    border: 1px solid #555555; /* Borde gris */
     border-radius: 6px; /* Bordes redondeados */
     box-sizing: border-box;
     font-size: 14px;
-    background-color: #FAF8F5; /* Fondo pastel claro */
-    color: #4A4A4A; /* Texto gris oscuro */
+    background-color: #4A4A4A; /* Fondo gris oscuro */
+    color: #E0E0E0; /* Texto claro */
 }
 
 input[type="number"]:focus, input[type="text"]:focus {
     outline: none;
-    border-color: #6C5B7B; /* Borde morado pastel al enfocar */
-    box-shadow: 0 0 5px rgba(108, 91, 123, 0.3); /* Sombra suave */
+    border-color: #00FF00; /* Borde verde neón al enfocar */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Sombra suave */
 }
 
 /* Botones */
@@ -77,68 +139,16 @@ button {
 }
 
 button.calcular {
-    background-color: #6C5B7B; /* Morado pastel */
-    color: #FFFFFF; /* Texto blanco */
+    background-color: #00FF00; /* Verde neón */
+    color: #1E1E1E; /* Texto oscuro */
 }
 
 button.guardar, button.cargar {
-    background-color: #F8B195; /* Coral pastel */
-    color: #FFFFFF; /* Texto blanco */
-    border: 1px solid #E0E0E0; /* Borde gris claro */
+    background-color: #3A3A3A; /* Fondo gris medio */
+    color: #00FF00; /* Texto verde neón */
+    border: 1px solid #00FF00; /* Borde verde neón */
 }
 
 button:hover {
-    opacity: 0.9;
-}
-
-/* Resultados */
-#resultados {
-    background-color: #FAF8F5; /* Fondo pastel claro */
-    padding: 15px;
-    border-radius: 6px; /* Bordes redondeados */
-    border: 1px solid #E0E0E0; /* Borde gris claro */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#resultados input {
-    background-color: #FFFFFF; /* Fondo blanco */
-    color: #4A4A4A; /* Texto gris oscuro */
-    border: 1px solid #E0E0E0; /* Borde gris claro */
-}
-
-/* Lista de archivos */
-#fileListContainer {
-    grid-column: span 2; /* Ocupa dos columnas */
-    margin-top: 20px;
-}
-
-.file-item {
-    background-color: #FFFFFF; /* Fondo blanco */
-    padding: 10px;
-    border-radius: 6px; /* Bordes redondeados */
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #E0E0E0; /* Borde gris claro */
-}
-
-.file-item span {
-    color: #4A4A4A; /* Texto gris oscuro */
-}
-
-.file-item button {
-    background-color: #F67280; /* Rojo pastel */
-    color: #FFFFFF; /* Texto blanco */
-    padding: 5px 10px;
-    border-radius: 4px; /* Bordes redondeados */
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.file-item button:hover {
     opacity: 0.9;
 }
