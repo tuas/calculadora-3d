@@ -18,11 +18,18 @@ body {
     padding: 25px;
     border-radius: 12px; /* Bordes redondeados */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
-    width: 100%;
-    max-width: 1000px; /* Ancho máximo */
+    width: 90%; /* Ancho relativo */
+    max-width: 1200px; /* Ancho máximo para pantallas grandes */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas flexibles */
     gap: 20px; /* Espacio entre elementos */
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1200px) {
+    .container {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
+    }
 }
 
 /* Sección de Datos */
@@ -32,7 +39,7 @@ body {
     padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas internas */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas flexibles */
     gap: 15px; /* Espacio entre elementos */
 }
 
