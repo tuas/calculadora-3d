@@ -91,8 +91,12 @@ button:hover {
     border: 1px solid #555555; /* Borde gris */
     color: #E0E0E0; /* Texto claro */
     font-size: 14px;
-    max-height: 200px; /* Altura máxima reducida para la tabla */
+    min-height: 200px; /* Altura mínima para la tabla */
+    max-height: 200px; /* Altura máxima para la tabla */
     overflow-y: auto; /* Scroll vertical si es necesario */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacio entre contenido y botones */
 }
 
 #resultados h2, #tabla h2 {
@@ -111,6 +115,7 @@ button:hover {
     display: flex;
     justify-content: space-between;
     gap: 10px; /* Espacio reducido entre botones */
+    margin-top: 15px; /* Espacio arriba de los botones */
 }
 
 #cargar-descargar button {
