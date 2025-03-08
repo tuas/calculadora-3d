@@ -84,17 +84,7 @@ button:hover {
 }
 
 /* Resultados */
-#resultados {
-    background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 15px; /* Padding reducido */
-    border-radius: 8px; /* Bordes redondeados */
-    border: 1px solid #555555; /* Borde gris */
-    color: #E0E0E0; /* Texto claro */
-    font-size: 14px;
-    min-height: 150px; /* Altura mínima para resultados */
-    max-height: 150px; /* Altura máxima para resultados */
-    overflow-y: auto; /* Scroll vertical si es necesario */
-}
+
 
 #resultados h2 {
     color: #00FF00; /* Verde neón */
