@@ -46,7 +46,7 @@ input[type="number"], input[type="text"] {
     border: 1px solid #555555; /* Borde gris */
     border-radius: 6px; /* Bordes redondeados */
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 50px;
     background-color: #4A4A4A; /* Fondo gris oscuro */
     color: #E0E0E0; /* Texto claro */
 }
