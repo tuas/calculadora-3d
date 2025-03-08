@@ -22,7 +22,7 @@ body {
     max-width: 1200px; /* Ancho máximo */
     display: grid;
     grid-template-columns: 1fr 1fr; /* Dos columnas */
-    gap: 15px; /* Espacio entre elementos */
+    gap: 10px; /* Espacio entre elementos */
     max-height: 90vh; /* Altura máxima para evitar desbordamiento */
     overflow-y: auto; /* Scroll vertical si es necesario */
 }
