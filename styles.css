@@ -22,92 +22,16 @@ body {
     max-width: 1200px; /* Ancho máximo */
     display: grid;
     grid-template-columns: 1fr 1fr; /* Dos columnas */
-    gap: 20px; /* Espacio entre elementos */
+    gap: 15px; /* Espacio entre elementos */
     max-height: 90vh; /* Altura máxima para evitar desbordamiento */
     overflow-y: auto; /* Scroll vertical si es necesario */
-}
-
-/* Sección de Datos */
-#datos {
-    grid-column: span 2; /* Ocupa dos columnas */
-    background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 20px;
-    border-radius: 8px; /* Bordes redondeados */
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas internas */
-    gap: 15px; /* Espacio entre elementos */
-}
-
-#datos h2 {
-    grid-column: span 2; /* Ocupa dos columnas */
-    color: #00FF00; /* Verde neón */
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-#datos .slot {
-    background-color: #4A4A4A; /* Fondo gris oscuro */
-    padding: 15px;
-    border-radius: 6px; /* Bordes redondeados */
-    border: 1px solid #555555; /* Borde gris */
-    color: #E0E0E0; /* Texto claro */
-    font-size: 14px;
-    min-height: 100px; /* Altura mínima para los slots */
-    overflow-y: auto; /* Scroll si el contenido supera la altura */
-}
-
-/* Sección de Cargar/Descargar */
-#cargar-descargar {
-    grid-column: span 2; /* Ocupa dos columnas */
-    background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 20px;
-    border-radius: 8px; /* Bordes redondeados */
-    display: flex;
-    justify-content: space-between;
-    gap: 15px; /* Espacio entre botones */
-}
-
-#cargar-descargar button {
-    background-color: #00FF00; /* Verde neón */
-    color: #1E1E1E; /* Texto oscuro */
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px; /* Bordes redondeados */
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    flex: 1; /* Ocupa el espacio disponible */
-}
-
-#cargar-descargar button:hover {
-    background-color: #00CC00; /* Verde más oscuro al pasar el mouse */
-}
-
-/* Resultados y Tabla */
-#resultados, #tabla {
-    background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 20px;
-    border-radius: 8px; /* Bordes redondeados */
-    border: 1px solid #555555; /* Borde gris */
-    color: #E0E0E0; /* Texto claro */
-    font-size: 14px;
-    max-height: 300px; /* Altura máxima para la tabla */
-    overflow-y: auto; /* Scroll vertical si es necesario */
-}
-
-#resultados h2, #tabla h2 {
-    color: #00FF00; /* Verde neón */
-    font-size: 20px;
-    margin-bottom: 15px;
-    text-align: center;
 }
 
 /* Formulario */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px; /* Espacio reducido entre elementos */
 }
 
 label {
@@ -118,7 +42,7 @@ label {
 
 input[type="number"], input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 8px; /* Padding reducido */
     border: 1px solid #555555; /* Borde gris */
     border-radius: 6px; /* Bordes redondeados */
     box-sizing: border-box;
@@ -135,7 +59,7 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 /* Botones */
 button {
-    padding: 12px 20px;
+    padding: 10px 15px; /* Botones más compactos */
     border: none;
     border-radius: 6px; /* Bordes redondeados */
     font-size: 14px;
@@ -157,4 +81,50 @@ button.guardar, button.cargar {
 
 button:hover {
     opacity: 0.9;
+}
+
+/* Resultados y Tabla */
+#resultados, #tabla {
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid #555555; /* Borde gris */
+    color: #E0E0E0; /* Texto claro */
+    font-size: 14px;
+    max-height: 200px; /* Altura máxima reducida para la tabla */
+    overflow-y: auto; /* Scroll vertical si es necesario */
+}
+
+#resultados h2, #tabla h2 {
+    color: #00FF00; /* Verde neón */
+    font-size: 18px; /* Tamaño de fuente reducido */
+    margin-bottom: 10px; /* Espacio reducido debajo del título */
+    text-align: center;
+}
+
+/* Sección de Cargar/Descargar */
+#cargar-descargar {
+    grid-column: span 2; /* Ocupa dos columnas */
+    background-color: #3A3A3A; /* Fondo gris medio */
+    padding: 15px; /* Padding reducido */
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espacio reducido entre botones */
+}
+
+#cargar-descargar button {
+    background-color: #00FF00; /* Verde neón */
+    color: #1E1E1E; /* Texto oscuro */
+    padding: 10px 15px; /* Botones más compactos */
+    border: none;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Ocupa el espacio disponible */
+}
+
+#cargar-descargar button:hover {
+    background-color: #00CC00; /* Verde más oscuro al pasar el mouse */
 }
