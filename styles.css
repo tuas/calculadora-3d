@@ -37,7 +37,7 @@ form {
 label {
     font-weight: 500; /* Semi-negrita */
     color: #00FF00; /* Verde neón */
-    font-size: 14px;
+    font-size: 50px;
 }
 
 input[type="number"], input[type="text"] {
