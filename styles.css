@@ -7,7 +7,7 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Alineación arriba para evitar centrado vertical */
     min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
@@ -15,70 +15,66 @@ body {
 
 .container {
     background-color: #2C2C2C; /* Fondo gris oscuro */
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px; /* Bordes redondeados */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
     width: 95%; /* Ocupa casi todo el ancho de la pantalla */
-    max-width: 1600px; /* Ancho máximo muy grande */
+    max-width: 1200px; /* Ancho máximo */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas flexibles */
-    gap: 25px; /* Más espacio entre elementos */
-}
-
-/* Ajustes para pantallas grandes */
-@media (min-width: 1200px) {
-    .container {
-        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas grandes */
-        gap: 30px; /* Más espacio entre elementos */
-    }
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 20px; /* Espacio entre elementos */
+    max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+    overflow-y: auto; /* Scroll vertical si es necesario */
 }
 
 /* Sección de Datos */
 #datos {
     grid-column: span 2; /* Ocupa dos columnas */
     background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 25px; /* Más padding */
+    padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas flexibles */
-    gap: 20px; /* Más espacio entre elementos */
+    grid-template-columns: 1fr 1fr; /* Dos columnas internas */
+    gap: 15px; /* Espacio entre elementos */
 }
 
 #datos h2 {
     grid-column: span 2; /* Ocupa dos columnas */
     color: #00FF00; /* Verde neón */
-    font-size: 28px; /* Título más grande */
-    margin-bottom: 20px; /* Más espacio debajo del título */
+    font-size: 24px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
 #datos .slot {
     background-color: #4A4A4A; /* Fondo gris oscuro */
-    padding: 20px; /* Más padding */
+    padding: 15px;
     border-radius: 6px; /* Bordes redondeados */
     border: 1px solid #555555; /* Borde gris */
     color: #E0E0E0; /* Texto claro */
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
+    min-height: 100px; /* Altura mínima para los slots */
+    overflow-y: auto; /* Scroll si el contenido supera la altura */
 }
 
 /* Sección de Cargar/Descargar */
 #cargar-descargar {
     grid-column: span 2; /* Ocupa dos columnas */
     background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 25px; /* Más padding */
+    padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Más espacio entre botones */
+    gap: 15px; /* Espacio entre botones */
 }
 
 #cargar-descargar button {
     background-color: #00FF00; /* Verde neón */
     color: #1E1E1E; /* Texto oscuro */
-    padding: 15px 25px; /* Botones más grandes */
+    padding: 12px 20px;
     border: none;
     border-radius: 6px; /* Bordes redondeados */
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     flex: 1; /* Ocupa el espacio disponible */
@@ -91,17 +87,19 @@ body {
 /* Resultados y Tabla */
 #resultados, #tabla {
     background-color: #3A3A3A; /* Fondo gris medio */
-    padding: 25px; /* Más padding */
+    padding: 20px;
     border-radius: 8px; /* Bordes redondeados */
     border: 1px solid #555555; /* Borde gris */
     color: #E0E0E0; /* Texto claro */
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
+    max-height: 300px; /* Altura máxima para la tabla */
+    overflow-y: auto; /* Scroll vertical si es necesario */
 }
 
 #resultados h2, #tabla h2 {
     color: #00FF00; /* Verde neón */
-    font-size: 24px; /* Título más grande */
-    margin-bottom: 20px; /* Más espacio debajo del título */
+    font-size: 20px;
+    margin-bottom: 15px;
     text-align: center;
 }
 
@@ -109,22 +107,22 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Más espacio entre elementos */
+    gap: 15px;
 }
 
 label {
     font-weight: 500; /* Semi-negrita */
     color: #00FF00; /* Verde neón */
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
 }
 
 input[type="number"], input[type="text"] {
     width: 100%;
-    padding: 12px; /* Más padding */
+    padding: 10px;
     border: 1px solid #555555; /* Borde gris */
     border-radius: 6px; /* Bordes redondeados */
     box-sizing: border-box;
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
     background-color: #4A4A4A; /* Fondo gris oscuro */
     color: #E0E0E0; /* Texto claro */
 }
@@ -137,10 +135,10 @@ input[type="number"]:focus, input[type="text"]:focus {
 
 /* Botones */
 button {
-    padding: 15px 25px; /* Botones más grandes */
+    padding: 12px 20px;
     border: none;
     border-radius: 6px; /* Bordes redondeados */
-    font-size: 16px; /* Texto más grande */
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 500; /* Semi-negrita */
