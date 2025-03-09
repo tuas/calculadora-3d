@@ -14,7 +14,7 @@ function calculate() {
     const precioMaterial = (gramosFilamento * precioKG) / 1000;
     const precioLuz = ((consumoReal * precioKwh) / 1000) * horasImpresion;
     const desgasteMaquinaResult = (precioRepuestos / desgasteMaquina) * horasImpresion;
-    const margenErrorResult = (precioMaterial + precioLuz + desgasteMaquinaResult) * margenError;
+    const margenErrorResult = (precioMaterial + precioLuz + desgasteMaquinaResult) * (margenError/100);
     const costo = precioMaterial + precioLuz + desgasteMaquinaResult + margenErrorResult;
     const totalCobrar = costo * margenGanancia;
 
