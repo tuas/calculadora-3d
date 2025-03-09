@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Costos de Impresión</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script> <!-- Biblioteca para manejar Excel -->
 </head>
 <body>
     <div class="container">
         <!-- Formulario -->
         <form id="calculadoraForm">
+            <label for="nombreConsulta">Nombre de la Consulta:</label>
+            <input type="text" id="nombreConsulta" name="nombreConsulta" required>
+
+            <label for="tipoMaquina">Tipo de Máquina Usada:</label>
+            <input type="text" id="tipoMaquina" name="tipoMaquina" required>
+
             <label for="precioKG">Precio por KG (€):</label>
             <input type="number" id="precioKG" name="precioKG" required>
 
@@ -60,18 +67,36 @@
 
             <label for="totalCobrar">Total a Cobrar (€):</label>
             <input type="text" id="totalCobrar" readonly>
+
+            <button type="button" class="guardar-tabla" onclick="guardarEnTabla()">Guardar en Tabla</button>
         </div>
 
         <!-- Tabla -->
         <div id="tabla">
             <h2>Tabla</h2>
-            <!-- Contenido de la tabla -->
+            <table id="tablaDatos">
+                <thead>
+                    <tr>
+                        <th>Nombre Consulta</th>
+                        <th>Tipo Máquina</th>
+                        <th>Precio KWh</th>
+                        <th>Consumo Real</th>
+                        <th>Horas Impresión</th>
+                        <th>Gramos Filamento</th>
+                        <th>Fecha Consulta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de la tabla se agregarán aquí -->
+                </tbody>
+            </table>
         </div>
 
         <!-- Sección de Cargar/Descargar -->
         <div id="cargar-descargar">
-            <button class="guardar" onclick="saveFile()">Guardar</button>
-            <button class="cargar" onclick="loadFile()">Cargar</button>
+            <input type="file" id="cargarArchivo" accept=".xlsx, .csv" style="display: none;">
+            <button class="cargar" onclick="document.getElementById('cargarArchivo').click()">Cargar Tabla</button>
+            <button class="guardar" onclick="guardarTablaExcel()">Descargar Tabla</button>
         </div>
     </div>
     <script src="script.js"></script>
