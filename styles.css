@@ -15,7 +15,7 @@ body {
 
 .container {
     background-color: #2C2C2C; /* Fondo gris oscuro */
-    padding: 10px;
+    padding: 5px;
     border-radius: 12px; /* Bordes redondeados */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra suave */
     width: 95%; /* Ocupa casi todo el ancho de la pantalla */
