@@ -5,10 +5,10 @@ function calculate() {
     const consumoReal = parseInt(document.getElementById('consumoReal').value);
     const desgasteMaquina = parseInt(document.getElementById('desgasteMaquina').value);
     const precioRepuestos = parseInt(document.getElementById('precioRepuestos').value);
-    const margenError = parseInt(document.getElementById('margenError').value) / 100;
+    const margenError = parseInt(document.getElementById('margenError').value);
     const horasImpresion = parseInt(document.getElementById('horasImpresion').value);
     const gramosFilamento = parseInt(document.getElementById('gramosFilamento').value);
-    const margenGanancia = parseInt(document.getElementById('margenGanancia').value) / 100;
+    const margenGanancia = parseInt(document.getElementById('margenGanancia').value);
 
     // Cálculos
     const precioMaterial = (gramosFilamento * precioKG) / 1000;
