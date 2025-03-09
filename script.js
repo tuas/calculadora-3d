@@ -89,6 +89,71 @@ function loadFile() {
 
     alert("Archivo cargado correctamente.");
 }
+/ Función para guardar los resultados en la tabla
+function guardarEnTabla() {
+    const nombreConsulta = document.getElementById('nombreConsulta').value;
+    const tipoMaquina = document.getElementById('tipoMaquina').value;
+    const precioKwh = document.getElementById('precioKwh').value;
+    const consumoReal = document.getElementById('consumoReal').value;
+    const horasImpresion = document.getElementById('horasImpresion').value;
+    const gramosFilamento = document.getElementById('gramosFilamento').value;
+    const fechaConsulta = new Date().toLocaleDateString(); // Fecha actual
+
+    const tablaBody = document.querySelector('#tablaDatos tbody');
+    const nuevaFila = document.createElement('tr');
+
+    nuevaFila.innerHTML = `
+        <td>${nombreConsulta}</td>
+        <td>${tipoMaquina}</td>
+        <td>${precioKwh}</td>
+        <td>${consumoReal}</td>
+        <td>${horasImpresion}</td>
+        <td>${gramosFilamento}</td>
+        <td>${fechaConsulta}</td>
+    `;
+
+    tablaBody.appendChild(nuevaFila);
+}
+
+// Función para cargar una tabla desde un archivo
+document.getElementById('cargarArchivo').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const json = XLSX.utils.sheet_to_json(sheet);
+
+        const tablaBody = document.querySelector('#tablaDatos tbody');
+        tablaBody.innerHTML = ''; // Limpiar la tabla antes de cargar nuevos datos
+
+        json.forEach(row => {
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.innerHTML = `
+                <td>${row['Nombre Consulta'] || ''}</td>
+                <td>${row['Tipo Máquina'] || ''}</td>
+                <td>${row['Precio KWh'] || ''}</td>
+                <td>${row['Consumo Real'] || ''}</td>
+                <td>${row['Horas Impresión'] || ''}</td>
+                <td>${row['Gramos Filamento'] || ''}</td>
+                <td>${row['Fecha Consulta'] || ''}</td>
+            `;
+            tablaBody.appendChild(nuevaFila);
+        });
+    };
+    reader.readAsArrayBuffer(file);
+});
+
+// Función para guardar la tabla en formato Excel
+function guardarTablaExcel() {
+    const tabla = document.getElementById('tablaDatos');
+    const workbook = XLSX.utils.table_to_book(tabla);
+    XLSX.writeFile(workbook, 'tabla_consulta.xlsx');
+}
 
 function updateFileList() {
     const fileList = document.getElementById('fileList');
