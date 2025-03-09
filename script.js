@@ -25,160 +25,82 @@ function calculate() {
     document.getElementById('margenErrorResult').value = Math.round(margenErrorResult);
     document.getElementById('costo').value = Math.round(costo);
     document.getElementById('totalCobrar').value = Math.round(totalCobrar);
+    // Guardar en la tabla
+    addToTable(costoTotal, totalCobrar);
 }
 
-function saveFile() {
-    const fileName = document.getElementById('fileName').value;
-    if (!fileName) {
-        alert("Por favor, ingresa un nombre para el archivo.");
-        return;
-    }
+// Función para agregar resultados a la tabla
+function addToTable(costoTotal, totalCobrar) {
+    const tabla = document.getElementById('tabla');
+    const fecha = new Date().toLocaleString();
 
-    const data = {
-        precioKG: document.getElementById('precioKG').value,
-        precioKwh: document.getElementById('precioKwh').value,
-        consumoReal: document.getElementById('consumoReal').value,
-        desgasteMaquina: document.getElementById('desgasteMaquina').value,
-        precioRepuestos: document.getElementById('precioRepuestos').value,
-        margenError: document.getElementById('margenError').value,
-        horasImpresion: document.getElementById('horasImpresion').value,
-        gramosFilamento: document.getElementById('gramosFilamento').value,
-        margenGanancia: document.getElementById('margenGanancia').value,
-        precioMaterial: document.getElementById('precioMaterial').value,
-        precioLuz: document.getElementById('precioLuz').value,
-        desgasteMaquinaResult: document.getElementById('desgasteMaquinaResult').value,
-        margenErrorResult: document.getElementById('margenErrorResult').value,
-        costo: document.getElementById('costo').value,
-        totalCobrar: document.getElementById('totalCobrar').value
-    };
-
-    localStorage.setItem(fileName, JSON.stringify(data));
-    alert("Archivo guardado correctamente.");
-    updateFileList();
-}
-
-function loadFile() {
-    const fileName = document.getElementById('fileName').value;
-    if (!fileName) {
-        alert("Por favor, ingresa un nombre para el archivo.");
-        return;
-    }
-
-    const data = JSON.parse(localStorage.getItem(fileName));
-    if (!data) {
-        alert("Archivo no encontrado.");
-        return;
-    }
-
-    // Cargar datos en los campos
-    document.getElementById('precioKG').value = data.precioKG;
-    document.getElementById('precioKwh').value = data.precioKwh;
-    document.getElementById('consumoReal').value = data.consumoReal;
-    document.getElementById('desgasteMaquina').value = data.desgasteMaquina;
-    document.getElementById('precioRepuestos').value = data.precioRepuestos;
-    document.getElementById('margenError').value = data.margenError;
-    document.getElementById('horasImpresion').value = data.horasImpresion;
-    document.getElementById('gramosFilamento').value = data.gramosFilamento;
-    document.getElementById('margenGanancia').value = data.margenGanancia;
-    document.getElementById('precioMaterial').value = data.precioMaterial;
-    document.getElementById('precioLuz').value = data.precioLuz;
-    document.getElementById('desgasteMaquinaResult').value = data.desgasteMaquinaResult;
-    document.getElementById('margenErrorResult').value = data.margenErrorResult;
-    document.getElementById('costo').value = data.costo;
-    document.getElementById('totalCobrar').value = data.totalCobrar;
-
-    alert("Archivo cargado correctamente.");
-}
-/ Función para guardar los resultados en la tabla
-function guardarEnTabla() {
-    const nombreConsulta = document.getElementById('nombreConsulta').value;
-    const tipoMaquina = document.getElementById('tipoMaquina').value;
-    const precioKwh = document.getElementById('precioKwh').value;
-    const consumoReal = document.getElementById('consumoReal').value;
-    const horasImpresion = document.getElementById('horasImpresion').value;
-    const gramosFilamento = document.getElementById('gramosFilamento').value;
-    const fechaConsulta = new Date().toLocaleDateString(); // Fecha actual
-
-    const tablaBody = document.querySelector('#tablaDatos tbody');
-    const nuevaFila = document.createElement('tr');
-
+    // Crear nueva fila
+    const nuevaFila = document.createElement('div');
+    nuevaFila.className = 'fila';
     nuevaFila.innerHTML = `
-        <td>${nombreConsulta}</td>
-        <td>${tipoMaquina}</td>
-        <td>${precioKwh}</td>
-        <td>${consumoReal}</td>
-        <td>${horasImpresion}</td>
-        <td>${gramosFilamento}</td>
-        <td>${fechaConsulta}</td>
+        <span>${fecha}</span>
+        <span>${costoTotal.toFixed(2)} €</span>
+        <span>${totalCobrar.toFixed(2)} €</span>
     `;
 
-    tablaBody.appendChild(nuevaFila);
+    // Agregar fila a la tabla
+    tabla.appendChild(nuevaFila);
 }
 
-// Función para cargar una tabla desde un archivo
-document.getElementById('cargarArchivo').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (!file) return;
+// Función para guardar los datos en un archivo JSON
+function saveFile() {
+    const filas = document.querySelectorAll('#tabla .fila');
+    const datos = [];
 
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const json = XLSX.utils.sheet_to_json(sheet);
-
-        const tablaBody = document.querySelector('#tablaDatos tbody');
-        tablaBody.innerHTML = ''; // Limpiar la tabla antes de cargar nuevos datos
-
-        json.forEach(row => {
-            const nuevaFila = document.createElement('tr');
-            nuevaFila.innerHTML = `
-                <td>${row['Nombre Consulta'] || ''}</td>
-                <td>${row['Tipo Máquina'] || ''}</td>
-                <td>${row['Precio KWh'] || ''}</td>
-                <td>${row['Consumo Real'] || ''}</td>
-                <td>${row['Horas Impresión'] || ''}</td>
-                <td>${row['Gramos Filamento'] || ''}</td>
-                <td>${row['Fecha Consulta'] || ''}</td>
-            `;
-            tablaBody.appendChild(nuevaFila);
+    filas.forEach(fila => {
+        const [fecha, costo, total] = fila.querySelectorAll('span');
+        datos.push({
+            fecha: fecha.textContent,
+            costo: costo.textContent,
+            total: total.textContent
         });
+    });
+
+    const datosStr = JSON.stringify(datos, null, 2);
+    const blob = new Blob([datosStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'datos_impresiones.json';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+// Función para cargar los datos desde un archivo JSON
+function loadFile() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+
+    input.onchange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const datos = JSON.parse(e.target.result);
+                const tabla = document.getElementById('tabla');
+                tabla.innerHTML = '<h2>Tabla</h2>';
+
+                datos.forEach(dato => {
+                    const nuevaFila = document.createElement('div');
+                    nuevaFila.className = 'fila';
+                    nuevaFila.innerHTML = `
+                        <span>${dato.fecha}</span>
+                        <span>${dato.costo}</span>
+                        <span>${dato.total}</span>
+                    `;
+                    tabla.appendChild(nuevaFila);
+                });
+            };
+            reader.readAsText(file);
+        }
     };
-    reader.readAsArrayBuffer(file);
-});
 
-// Función para guardar la tabla en formato Excel
-function guardarTablaExcel() {
-    const tabla = document.getElementById('tablaDatos');
-    const workbook = XLSX.utils.table_to_book(tabla);
-    XLSX.writeFile(workbook, 'tabla_consulta.xlsx');
+    input.click();
 }
-
-function updateFileList() {
-    const fileList = document.getElementById('fileList');
-    fileList.innerHTML = '';
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const li = document.createElement('li');
-        li.className = 'file-item';
-        li.innerHTML = `
-            <span>${key}</span>
-            <button onclick="deleteFile('${key}')">Eliminar</button>
-        `;
-        li.onclick = () => {
-            document.getElementById('fileName').value = key;
-            loadFile();
-        };
-        fileList.appendChild(li);
-    }
-}
-
-function deleteFile(key) {
-    localStorage.removeItem(key);
-    updateFileList();
-    alert("Archivo eliminado correctamente.");
-}
-
-// Inicializar la lista de archivos al cargar la página
-updateFileList();
