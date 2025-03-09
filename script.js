@@ -16,7 +16,7 @@ function calculate() {
     const desgasteMaquinaResult = (precioRepuestos / desgasteMaquina) * horasImpresion;
     const margenErrorResult = (precioMaterial + precioLuz + desgasteMaquinaResult) * margenError;
     const costo = precioMaterial + precioLuz + desgasteMaquinaResult + margenErrorResult;
-    const totalCobrar = costo * (1 + margenGanancia);
+    const totalCobrar = costo * margenGanancia;
 
     // Mostrar resultados redondeados
     document.getElementById('precioMaterial').value = Math.round(precioMaterial);
