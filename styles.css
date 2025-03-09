@@ -26,6 +26,84 @@ body {
     max-height: 90vh; /* Altura máxima para evitar desbordamiento */
     overflow-y: auto; /* Scroll vertical si es necesario */
 }
+h1, h2 {
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Resultados */
+#resultados input {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+/* Tabla */
+#tabla {
+    margin-top: 2rem;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.fila span {
+    flex: 1;
+    text-align: center;
+}
+
+/* Botones de guardar/cargar */
+#cargar-descargar {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.guardar {
+    background-color: #28a745;
+}
+
+.guardar:hover {
+    background-color: #218838;
+}
+
+.cargar {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.cargar:hover {
+    background-color: #e0a800;
+}
 
 /* Formulario */
 form {
